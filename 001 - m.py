@@ -1,30 +1,31 @@
-# Project Euler
-# 1 - Multiples of 3 and 5
+# Project Euler - 1
 
-total_num_3 = 0
-total_num_5 = 0
-final_3 = 0
-final_5 = 0
-number = 0
+number_3 = 0
+number_5 = 0
+total_3 = 0
+total_5 = 0
 
-n = int(input("Input a number: "))
+number_15 = 0 # Lowest common divisor
+total_15 = 0
+count = 0
 
+n = 1000 
 
-def TakeMult3(number, total_num_3):
-    while number < n: 
-       number += 3 
-       total_num_3 += number
-       final_3 = total_num_3 - number #Take last number before exceeding n
-    print("Sum of multiples of 3:", final_3)
+while (number_3 <= n):
+    number_3 += 3 
+    total_3 += number_3
 
-def TakeMult5(number, total_num_5):
-    while number < n:
-        number += 5
-        total_num_5 += number
-        final_5 = total_num_5 - number
-    print("Sum of multiple of 5:", final_5)
+while (number_5 < n):
+    number_5 += 5
+    total_5 += number_5
 
+while number_15 <= n: # Multiples of 15 are where 3 and 5 have common terms so find sum
+    number_15 += 15 
+    total_15 += number_15
         
-TakeMult3(number, total_num_3)
-TakeMult5(number, total_num_3)
+total_5 = total_5 - number_5
+total_3 = total_3 - number_3
+total_15 = total_15 - number_15
 
+final = (total_3 + total_5) - total_15 # Take away sum of multiples of 15
+print(final)
